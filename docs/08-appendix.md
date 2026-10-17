@@ -187,6 +187,9 @@ LiteRtStatus LiteRtRunCompiledModel(LiteRtCompiledModel compiled_model,
 
 ## 8.6 参考资料
 
+> 完整的来源分类与「哪条结论是实测、哪条来自外部」的对照表，见 [09 · 数据来源](09-sources.md)。
+
+
 - [LiteRT MediaTek 后端源码](https://github.com/google-ai-edge/LiteRT/tree/main/litert/vendors/mediatek)
 - [LiteRT #6462 — AOT 编译优化差距](https://github.com/google-ai-edge/LiteRT/issues/6462)
 - [LiteRT #8098 — Conv2D per-channel 量化 bias 问题](https://github.com/google-ai-edge/LiteRT/issues/8098)

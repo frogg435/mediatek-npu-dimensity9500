@@ -48,6 +48,22 @@
 
 ---
 
+## 关键启发来源
+
+这个项目在几个节点上被外部信息**直接改变了方向**，需要明确致谢：
+
+| 来源 | 它改变了什么 |
+|---|---|
+| [LiteRT #8098](https://github.com/google-ai-edge/LiteRT/issues/8098) | **推翻了我的错误结论**——我原本已认定「NPU 不支持卷积」，是这个 issue 让我意识到还有 AOT 这条离线路径 |
+| [LiteRT #6462](https://github.com/google-ai-edge/LiteRT/issues/6462) | 同款 **MT6993** 设备上 AOT 可行的实证；也预示了公开工具链只能拿到 1.2 倍而非 153 倍 |
+| [phone2a-apu-unlock](https://github.com/Peterc3-dev/phone2a-apu-unlock) | 确认 NeuroPilot SDK **合法公开可分发**、LiteRT/ExecuTorch 包装的是同一套运行时 |
+| [termux-packages #27640](https://github.com/termux/termux-packages/issues/27640) | Termux 下 MTK Mali 跑 OpenCL 的具体做法 |
+| [LiteRT 官方源码](https://github.com/google-ai-edge/LiteRT/tree/main/litert/vendors/mediatek) | 算子清单、magic number 常量、所有 API 细节 |
+
+完整的来源分类（实测 / 官方源码 / 社区讨论 / 制品渠道）见
+[09 · 数据来源](docs/09-sources.md)。其中也说明了**哪些资料我没能获取**
+（例如 Google 官方那篇 MediaTek 文档抓取失败），以及**为什么不该只看结论**。
+
 ## 关键数字
 
 ### NPU 推理性能（MobileNetV1，224×224）
@@ -84,6 +100,7 @@
 | [06 · 性能基准](docs/06-benchmarks.md) | 完整测量数据与调优过程 |
 | [07 · 超分实战](docs/07-super-resolution.md) | 分块管线、画质对比、注意事项 |
 | [08 · 附录](docs/08-appendix.md) | API 速查、踩坑清单、文件清单 |
+| [09 · 数据来源](docs/09-sources.md) | **哪些是实测、哪些来自外部**，以及关键启发来源 |
 | **[tools/](tools/)** | **可直接用的脚本与探测工具** |
 
 ---
