@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+*.bin
+aot_*/
+sysroot/
+python/
+.env
+*.token

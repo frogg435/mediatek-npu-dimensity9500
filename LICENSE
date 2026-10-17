@@ -1,0 +1,8 @@
+Private research notes. All rights reserved.
+
+This repository documents personal research on MediaTek NPU deployment.
+It references publicly available components (LiteRT, MediaTek NeuroPilot SDK,
+Maven-hosted LiteRT runtime artifacts). No proprietary or confidential
+material is included.
+
+Not affiliated with MediaTek, Google, or vivo.
