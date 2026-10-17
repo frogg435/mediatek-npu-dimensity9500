@@ -41,9 +41,9 @@
 | **NPU** | **16.42 ms** | **4.37 秒** |
 | CPU (XNNPACK) | 241.68 ms | 64.3 秒 |
 
-**14.7× 加速。** 画质方面，纹理区锐度（拉普拉斯方差）从 1.89 提升到 **9.76（5.17×）**。
+**14.7× 加速。** 画质方面，纹理区锐度（拉普拉斯方差）从 9.11 提升到 **336.07（36.9×）**。
 
-![超分结果预览](docs/images/sr-full-preview.jpg)
+![超分结果预览](docs/images/sr-preview.jpg)
 
 ---
 
@@ -59,8 +59,24 @@
 | [06 · 性能基准](docs/06-benchmarks.md) | 完整测量数据与调优过程 |
 | [07 · 超分实战](docs/07-super-resolution.md) | 分块管线、画质对比、注意事项 |
 | [08 · 附录](docs/08-appendix.md) | API 速查、踩坑清单、文件清单 |
+| **[tools/](tools/)** | **可直接用的脚本与探测工具** |
 
 ---
+
+## 附带工具
+
+`tools/` 里有本次研究产出的可复用工具：
+
+| 工具 | 用途 |
+|---|---|
+| `sr-gpu.sh` | GPU 超分封装（低干扰、模型预设、批量处理） |
+| `sr_tile.py` + `sr_run.c` | NPU 分块超分管线 |
+| `npu_run.c` | LiteRT NPU 运行器（计时 / 输出导出） |
+| `probe_runtime.c` | 厂商运行时能力探测（magic / 版本 / 设备数） |
+| `probe_op_support.c` | 算子支持度矩阵探测 |
+| `neuron_add.c` | Neuron SDK 最小推理示例 |
+
+详见 [tools/README.md](tools/README.md)。
 
 ## 复现路径（概要）
 
@@ -87,6 +103,14 @@ LiteRtSetOptionsHardwareAccelerators(opts, 1 /* CPU */);
 细节见各分册。
 
 ---
+
+## 贡献
+
+欢迎提 issue 讨论。特别欢迎这些方向的反馈：
+
+- 其他 MTK 机型（尤其不同 NPU 代次）上是否同样可跑通 AOT
+- 内部编译 flags 的进一步挖掘
+- 量化模型（int8）在 NPU 上的实际吞吐
 
 ## 免责声明
 
