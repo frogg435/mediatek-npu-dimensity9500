@@ -1,5 +1,46 @@
 # 01 · 平台探测
 
+## 1.0 试验设备（完整标识）
+
+本文所有测试均在此设备上完成，**未在其他机型验证**。
+
+| 项 | 值 |
+|---|---|
+| 品牌 | vivo |
+| 型号 | **V2548A** |
+| 内部代号 | `PD2548` |
+| SoC | MediaTek **MT6993** = 天玑 9500 |
+| GPU | Mali-G1-Ultra MC12 |
+| NPU | MediaTek NPU 990（APU） |
+| 内存 | 11,618,428 kB ≈ 11.1 GiB |
+| Android 版本 | 16（API 36） |
+| 版本号 | `PD2548_A_16.0.14.6.W10` |
+| 构建指纹 | `vivo/PD2548/PD2548:16/BP2A.250605.031.A3_V000L1/compiler260904234344:user/release-keys` |
+| 构建日期 | `Fri Sep  4 23:43:44 CST 2026` |
+| 构建类型 | `user` / `release-keys`（stock 固件，非 userdebug） |
+| 内核 | `6.12.58-android16-6-g0a092cc0037a-abogki521987229-4k` |
+| ABI | `arm64-v8a` |
+| Root | 无 |
+| SELinux 域 | `u:r:untrusted_app_27:s0:...` |
+| 宿主环境 | Termux |
+
+采集命令：
+
+```bash
+for p in ro.product.brand ro.product.model ro.product.device ro.soc.model \
+         ro.build.version.release ro.build.version.sdk ro.build.display.id \
+         ro.build.fingerprint ro.build.type ro.build.tags; do
+  printf '%-30s %s\n' "$p" "$(getprop $p)"
+done
+uname -r
+grep MemTotal /proc/meminfo
+```
+
+> **为什么强调固件版本**：本文的核心结论（NPU 只对第三方开放 ADD/MUL；
+> AOT 可绕过）都取决于厂商 HAL 服务的固件实现。同一 SoC 的不同厂商、不同固件版本，
+> 行为可能完全不同。换设备前请先跑
+> [`tools/probe_runtime.c`](../tools/probe_runtime.c) 确认 magic number 与设备数。
+
 ## 1.1 设备识别
 
 在 Termux 里探测到的基本信息：

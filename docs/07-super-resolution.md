@@ -2,6 +2,9 @@
 
 把前面所有环节串起来，用真实照片跑一遍完整超分。
 
+**测试设备**：vivo V2548A / MT6993 / 固件 `PD2548_A_16.0.14.6.W10` / 无 root。
+
+
 ## 7.1 模型
 
 `litert-community/real-esrgan-x4v3-litert`（HuggingFace，官方 LiteRT 转换版）

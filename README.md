@@ -3,7 +3,32 @@
 在 **一台未 root 的零售 Android 手机上**，从零打通 MediaTek NPU 的 AOT 编译与推理执行链路，
 并用它跑通 Real-ESRGAN 超分（相对 CPU **14.7×** 加速）。
 
-设备：vivo V2548A / 天玑 9500 (MT6993) / Android 16 / 未 root / 全程在 Termux 内完成，**未使用 PC**。
+## 试验设备
+
+本文所有结论、性能数据、算子支持情况**均基于下述单一设备与单一固件**，未在其他机型验证。
+
+| 项 | 值 |
+|---|---|
+| 品牌 / 型号 | vivo **V2548A**（内部代号 `PD2548`） |
+| SoC | MediaTek **MT6993** = 天玑 9500（台积电 N3P） |
+| CPU | 1× C1-Ultra + 3× C1-Premium + 4× C1-Pro，全大核，8 核 |
+| GPU | **Mali-G1-Ultra MC12**（ARM 2025 更名后的旗舰核） |
+| NPU | MediaTek **NPU 990**（APU；4 个 MDLA 卷积核 + VP6 DSP） |
+| 内存 | 11,618,428 kB ≈ 11.1 GiB |
+| 系统 | Android **16**（SDK 36） |
+| 版本号 | `PD2548_A_16.0.14.6.W10` |
+| 构建指纹 | `vivo/PD2548/PD2548:16/BP2A.250605.031.A3_V000L1/compiler260904234344:user/release-keys` |
+| 构建类型 | `user` / `release-keys`（**stock 官方固件，非 debug 版**） |
+| 内核 | `6.12.58-android16-6-g0a092cc0037a-abogki521987229-4k` |
+| Root | **无** |
+| 运行环境 | Termux（`untrusted_app_27` 域） |
+| 是否使用 PC | **否**，全部在手机本地完成 |
+
+> ⚠️ **适用范围**：NPU 的可访问性（magic number 档位、算子白名单）由**厂商固件决定**。
+> 换机型、换系统版本后行为可能完全不同。请先跑
+> [`tools/probe_runtime.c`](tools/probe_runtime.c) 确认本机状态，再决定是否值得投入。
+
+
 
 ---
 
