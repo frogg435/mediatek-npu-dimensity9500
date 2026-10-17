@@ -14,7 +14,7 @@
 | **NPU（AOT 预编译）** | ✅ **可用** | 本文的核心成果，卷积可跑 |
 | NPU（设备端在线编译） | ❌ | 只开放 `ADD`/`MUL` 两个算子 |
 | NNAPI | ❌ | 只暴露 CPU 参考实现 |
-| GPU（Vulkan / OpenCL） | ✅ 可用 | 见 [GPU 访问](docs/02-gpu.md) |
+| GPU（Vulkan / OpenCL） | ✅ 可用 | **无需 root**，见 [无 root 调 GPU](docs/02-gpu.md) |
 
 **关键认知：限制不在硬件，而在两条编译路径的开放程度不同。**
 
@@ -52,7 +52,7 @@
 | 文档 | 内容 |
 |---|---|
 | [01 · 平台探测](docs/01-platform.md) | 设备信息、SoC/GPU/NPU 识别、可用权限边界 |
-| [02 · GPU 访问](docs/02-gpu.md) | linker namespace 限制、OpenCL/Vulkan 打通方式 |
+| [02 · 无 root 调 GPU](docs/02-gpu.md) | **Vulkan/OpenCL/EGL 三条完整路径**、linker namespace 绕法、可复现代码 |
 | [03 · NPU 访问分析](docs/03-npu-access.md) | NNAPI 与 Neuron SDK 直连，magic number 分级机制 |
 | [04 · AOT 编译](docs/04-aot-compilation.md) | 在手机上自举 x86_64 工具链，跑通 LiteRT AOT |
 | [05 · 设备端运行时](docs/05-device-runtime.md) | LiteRT Android 运行时 + dispatch 插件，`ACCEL=1` 的关键性 |
